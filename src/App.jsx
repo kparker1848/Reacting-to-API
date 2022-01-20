@@ -9,12 +9,14 @@ const App = () => {
         fetch("https://ghibliapi.herokuapp.com/films")
             .then(res => res.json())
             .then(allFilms => setFilmList(allFilms))
+            .catch(err => console.log(err))
     }, []);
 
     useEffect(() => {
         fetch("https://ghibliapi.herokuapp.com/people")
             .then(res => res.json())
             .then(allPeople => setPeopleList(allPeople))
+            .catch(err => console.log(err))
     }, []);
 
     const handleFilmButtonClick = (e) => {
@@ -32,7 +34,7 @@ const App = () => {
                 <div className="col-12 d-flex flex-wrap justify-content-center">
                     <img className="col-12" src="https://www.fanboy.com/wp-content/uploads/2013/07/Studio-noscale.jpg" alt="Ghibli Films Years" />
                 </div>
-                <h1 className="text-center m-5">Studio Ghibli</h1>
+                <h1 className="text-center m-5">Studio Ghibli API Lab</h1>
                 <div className="container d-flex flex-wrap justify-content-center">
                     <div className="col-6 d-flex justify-content-evenly">
                         <button type="button" className="btn btn-info text-light" onClick={handleFilmButtonClick}>Films</button>
@@ -57,7 +59,7 @@ const App = () => {
                 <div className="col-12 d-flex flex-wrap justify-content-center">
                     <img className="col-4" src="https://data.whicdn.com/images/350711764/original.gif" alt="Birds flying" />
                 </div>
-                <h1 className="text-center m-5">Studio Ghibli</h1>
+                <h1 className="text-center m-5">Studio Ghibli API Lab</h1>
                 <div className="container d-flex flex-wrap justify-content-center">
                     <div className="col-6 d-flex justify-content-evenly">
                         <button type="button" className="btn btn-info text-light" onClick={handleFilmButtonClick}>Films</button>
@@ -74,8 +76,6 @@ const App = () => {
                                         <h6 className="text-center">{films.original_title}</h6>
                                         <h6 className="text-center fw-bolder">{films.release_date}</h6>
                                         <p className="card-text">{films.description}</p>
-
-
                                     </div>
                                 </div>
                             ))}
